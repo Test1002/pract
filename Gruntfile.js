@@ -6,9 +6,9 @@ module.exports = function(grunt) {
                 src: [
 
                     'app.js',
-                    "**/*/.js",
-                    "!**/node_modules/**"
-                    //'node_modules/express/**/*.js'
+                   // "**/*/.js",
+                    //"!**/node_modules/**"
+                    'node_modules/express/**/*.js'
 
                 ],
                 dest: 'build/scripts.js'
