@@ -1,19 +1,7 @@
+ALL_TASKS = ['jade', 'express:dev', 'watch'];
 module.exports = function(grunt) {
 
     grunt.initConfig({
-        concat: {
-            main: {
-                src: [
-
-                    'app.js',
-                   // "**/*/.js",
-                    //"!**/node_modules/**"
-                    'node_modules/express/**/*.js'
-
-                ],
-                dest: 'build/scripts.js'
-            }
-        },
         jade: {
             main: {
                 src: [
@@ -40,11 +28,30 @@ module.exports = function(grunt) {
         },
         */
 
-
+        watch: {
+          express: {
+            files:  [ 
+                      'views/**/*.jade',
+                      'public/**/*.css'
+                    ],
+            tasks:  ALL_TASKS,
+            options: {
+              spawn: false
+            }
+          }
+        },
+          
         uglify: {
             main: {
                 files: {
                     'build/scripts.min.js': '<%= concat.main.dest %>'
+                }
+            }
+        },
+        express: {
+            dev:{
+                options: {
+                    script: 'app.js'
                 }
             }
         }
@@ -55,8 +62,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks("grunt-contrib-jade");
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-express-server');
+    grunt.loadNpmTasks('grunt-contrib-watch' );
 
 
 
-    grunt.registerTask('default', ['concat', 'jade']);
+    grunt.registerTask('default', ALL_TASKS);
 };
