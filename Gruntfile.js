@@ -1,4 +1,4 @@
-ALL_TASKS = ['jade', 'express:dev', 'watch'];
+ALL_TASKS = ['jade', 'express:dev', 'watch', 'connect',];
 module.exports = function(grunt) {
 
     grunt.initConfig({
@@ -12,35 +12,29 @@ module.exports = function(grunt) {
                 ext: ".html"
             }
         },
-       /* jade: {
-            compile: {
+        connect: {
+            server: {
                 options: {
-                    client: false,
-                    pretty: true
-                },
-                files: [ {
-                    src: "vies/index.jade",
-                    dest: "build/templates/",
-                    ext: "html",
-                    cwd: "source/templates/"
-                } ]
+
+                }
             }
+
         },
-        */
 
         watch: {
-          express: {
-            files:  [ 
-                      'views/**/*.jade',
-                      'public/**/*.css'
-                    ],
-            tasks:  ALL_TASKS,
-            options: {
-              spawn: false
+            express: {
+                files:  [
+                    'views/**/*.jade',
+                    'public/**/*.css'
+                ],
+                tasks:  ALL_TASKS,
+                options: {
+
+                    spawn: false
+                }
             }
-          }
         },
-          
+
         uglify: {
             main: {
                 files: {
@@ -51,6 +45,7 @@ module.exports = function(grunt) {
         express: {
             dev:{
                 options: {
+                    port: 1337,
                     script: 'app.js'
                 }
             }
@@ -63,7 +58,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks("grunt-contrib-jade");
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-express-server');
+    grunt.loadNpmTasks('grunt-contrib-connect')
     grunt.loadNpmTasks('grunt-contrib-watch' );
+
 
 
 
