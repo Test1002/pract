@@ -6,7 +6,7 @@
   "scripts": {
     "postinstall": "grunt uglify",
     "start": "node app.js",
-    "test": "node node_modules/grunt-cli/bin/grunt tests"
+    "test": "node node_modules/grunt-cli/bin/grunt test"
   },
   "dependencies": {
     "body-parser": "~1.12.4",
