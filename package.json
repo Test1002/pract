@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "grunt uglify",
-    "start": "node app.js",
+	"start": "node app.js",
     "test": "node node_modules/grunt-cli/bin/grunt test"
   },
   "dependencies": {
